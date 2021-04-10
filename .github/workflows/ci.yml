@@ -19,22 +19,9 @@ jobs:
       - name: Install Pipenv
         uses: dschep/install-pipenv-action@v1
 
-      - name: Get pipenv venv hashes
-        id: hashes
-        run: |
-          echo "##[set-output name=root;]$(python -c 'import sys; import base64; import hashlib; print(base64.urlsafe_b64encode(hashlib.sha256(sys.argv[-1].encode()).digest()[:6]).decode()[:8])' $(pwd)/Pipfile)"
-
-      - name: Setup root cache
-        uses: actions/cache@v2
-        id: root-cache
-        with:
-          path: /home/runner/.local/share/virtualenvs/ursina-engine-playground-${{ steps.hashes.outputs.root }}
-          key: root-${{ hashFiles('/home/runner/work/ursina-engine-playground/ursina-engine-playground/Pipfile.lock') }}
-
       - name: Install root dependencies
-        if: steps.root-cache.outputs.cache-hit != 'true'
         run: |
-          pipenv install --dev
+          pipenv install --dev --skip-lock
 
       - name: Run linting
         run: |
