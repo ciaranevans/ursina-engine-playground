@@ -17,11 +17,14 @@ jobs:
           python-version: 3.8.8
 
       - name: Install Pipenv
-        uses: dschep/install-pipenv-action@v1
+        run: |
+          pip install -U pip
+          pip install wheel # so we can download binary packages
+          pip install poetry
 
       - name: Install root dependencies
         run: |
-          pipenv install --dev --skip-lock
+          make install-dev
 
       - name: Run linting
         run: |
