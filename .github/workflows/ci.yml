@@ -16,7 +16,7 @@ jobs:
         with:
           python-version: 3.8.8
 
-      - name: Install Pipenv
+      - name: Install Poetry
         run: |
           pip install -U pip
           pip install wheel # so we can download binary packages
