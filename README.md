@@ -7,14 +7,14 @@ Trying out [Ursina Engine](https://github.com/pokepetter/ursina) - a Python game
 To develop on this project, you need the following installed:
 
 * Python 3.8.* (I recommend using [Pyenv](https://github.com/pyenv/pyenv))
-* [Pipenv](https://github.com/pypa/pipenv)
+* [Poetry](https://github.com/python-poetry/poetry)
 
 # Getting setup
 
 To get setup for development, run in the root of the repo:
 
 ```bash
-$ make install-dev # installs all development requirements and sets up a pipenv virtual env
+$ make install-dev # installs all development requirements and sets up a poetry virtual env
 ```
 
 # Running the game
